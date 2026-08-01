@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  :root {
+    --background: #FAFAFA; /* Soft Ivory / Off-White */
+    --foreground: #1F2937; /* Slate Gray */
+    
+    --primary: #849F89; /* Soft Sage Green / Eucalyptus */
+    --primary-foreground: #FFFFFF;
+    
+    --muted: #F3F4F6; /* Light slate gray for muted areas */
+    --muted-foreground: #6B7280;
+    
+    --accent: #6C8570; /* Darker Sage for accents */
+    --accent-foreground: #FFFFFF;
+    
+    --border: #E5E7EB;
+    
+    --card: #FFFFFF;
+    --card-foreground: #1F2937;
+    
+    --sidebar: #FFFFFF;
+    --sidebar-foreground: #4B5563;
+    --sidebar-border: #E5E7EB;
+    
+    --success: #22C55E;
+    --success-foreground: #FFFFFF;
+    
+    --warning: #F59E0B;
+    --warning-foreground: #FFFFFF;
+    
+    --danger: #EF4444;
+    --danger-foreground: #FFFFFF;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-foreground;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium Continuous Animations */
+@keyframes levitate {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse-glow {
+  0% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.05); }
+  100% { opacity: 0.2; transform: scale(1); }
+}
+
+@keyframes gradient-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-levitate {
+  animation: levitate 8s ease-in-out infinite;
+}
+
+.animate-levitate-delayed {
+  animation: levitate 8s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 8s ease-in-out infinite;
+}
+
+.animate-gradient-pan {
+  background-size: 200% 200%;
+  animation: gradient-pan 15s ease infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
