@@ -19,10 +19,7 @@ const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const app = express();
 
 app.use(cors({
-    origin: function (origin, callback) {
-        // Automatically allow any origin (helps with dynamic Vercel URLs)
-        callback(null, origin || '*');
-    },
+    origin: true,
     credentials: true
 }));
 app.use(express.json());
