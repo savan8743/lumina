@@ -52,7 +52,8 @@ export function AuthModal({ isOpen, onClose, onLogin, resetToken }) {
         }
 
         const endpoint = viewState === 'login' ? '/api/users/login' : '/api/users/register';
-        const url = `${(import.meta.env.VITE_API_URL || '').replace(/\\/$/, '')}${endpoint}`;
+        const baseUrl = import.meta.env.VITE_API_URL || '';
+        const url = `${baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl}${endpoint}`;
         
         const bodyData = viewState === 'login' 
           ? { email: formData.email, password: formData.password } 
