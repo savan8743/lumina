@@ -51,7 +51,9 @@ export function AuthModal({ isOpen, onClose, onLogin, resetToken }) {
           throw new Error("Passwords do not match");
         }
 
-        const url = viewState === 'login' ? '/api/users/login' : '/api/users/register';
+        const endpoint = viewState === 'login' ? '/api/users/login' : '/api/users/register';
+        const url = `${(import.meta.env.VITE_API_URL || '').replace(/\\/$/, '')}${endpoint}`;
+        
         const bodyData = viewState === 'login' 
           ? { email: formData.email, password: formData.password } 
           : { name: formData.name, email: formData.email, password: formData.password };
