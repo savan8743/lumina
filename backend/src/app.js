@@ -18,11 +18,24 @@ const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 const app = express();
 
+const connectDB = require("./config/db");
+
 app.use(cors({
     origin: true,
     credentials: true
 }));
 app.use(express.json());
+
+// Ensure Database is connected for Serverless Functions
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        console.error("Database connection failed:", error);
+        res.status(500).json({ message: "Database connection failed", error: error.message });
+    }
+});
 
 app.use("/api/users", userRoutes);
 app.use("/api/categories", categoryRoutes);
