@@ -51,7 +51,7 @@ export function CheckoutDrawer({ isOpen, onClose }) {
       const token = localStorage.getItem('token') || '';
 
       // 1. Create Razorpay Order on Backend
-      const orderRes = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/payment/razorpay`, {
+      const orderRes = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/payment/razorpay`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export function CheckoutDrawer({ isOpen, onClose }) {
           try {
             setLoading(true);
             // 3. Verify Payment
-            const verifyRes = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/payment/razorpay/verify`, {
+            const verifyRes = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/payment/razorpay/verify`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ export function CheckoutDrawer({ isOpen, onClose }) {
 
             if (verifyRes.ok) {
               // 4. Create Final Order
-              const finalOrderRes = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/orders`, {
+              const finalOrderRes = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/orders`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

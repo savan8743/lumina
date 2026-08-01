@@ -13,7 +13,7 @@ export function ReviewsView() {
 
   const fetchReviews = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/reviews/admin`, {
+      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/reviews/admin`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       const data = await res.json();
@@ -27,7 +27,7 @@ export function ReviewsView() {
 
   const toggleApproval = async (review) => {
     try {
-      await fetch(`${import.meta.env.VITE_API_URL || ''}/api/reviews/${review._id}`, {
+      await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/reviews/${review._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export function ReviewsView() {
   const handleDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this review?')) return;
     try {
-      await fetch(`${import.meta.env.VITE_API_URL || ''}/api/reviews/${id}`, {
+      await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/reviews/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });

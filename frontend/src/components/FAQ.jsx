@@ -8,7 +8,7 @@ export function FAQ() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL || ''}/api/faqs`)
+    fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/faqs`)
       .then(res => res.json())
       .then(data => {
         setFaqs(data);

@@ -199,7 +199,7 @@ function DashboardView() {
     const fetchAnalytics = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/dashboard/analytics`, {
+        const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/dashboard/analytics`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const result = await res.json();
@@ -344,7 +344,7 @@ function ProductsView() {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/products?pageSize=100`);
+      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/products?pageSize=100`);
       const data = await res.json();
       setProducts(data.products || []);
     } catch (err) {
@@ -356,7 +356,7 @@ function ProductsView() {
 
   const fetchCategories = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/categories`);
+      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/categories`);
       const data = await res.json();
       setCategories(data);
       if (data.length > 0) {
@@ -410,7 +410,7 @@ function ProductsView() {
     setUploading(true);
     try {
       const token = localStorage.getItem('token') || '';
-      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/upload`, {
+      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/upload`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formDataObj
@@ -461,7 +461,7 @@ function ProductsView() {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('token') || '';
-      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/products/${id}`, {
+      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/products/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

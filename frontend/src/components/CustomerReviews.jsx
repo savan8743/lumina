@@ -7,7 +7,7 @@ export function CustomerReviews() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL || ''}/api/reviews`)
+    fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/reviews`)
       .then(res => res.json())
       .then(data => {
         setReviews(data);
