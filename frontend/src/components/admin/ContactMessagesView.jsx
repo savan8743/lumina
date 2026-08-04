@@ -13,7 +13,7 @@ export function ContactMessagesView() {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/contact/admin`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/contact/admin`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       const data = await res.json();
@@ -27,7 +27,7 @@ export function ContactMessagesView() {
 
   const updateStatus = async (id, status) => {
     try {
-      await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/contact/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL || ''}/api/contact/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export function ContactMessagesView() {
   const handleDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this message?')) return;
     try {
-      await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/contact/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL || ''}/api/contact/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });

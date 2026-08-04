@@ -24,7 +24,7 @@ export function FeaturedProducts() {
   };
 
   useEffect(() => {
-    fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/products`)
+    fetch(`${import.meta.env.VITE_API_URL || ''}/api/products`)
       .then(res => res.json())
       .then(data => {
         // Assume API returns { products: [...] } based on standard patterns or just [...]

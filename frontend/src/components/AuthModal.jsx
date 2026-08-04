@@ -76,7 +76,7 @@ export function AuthModal({ isOpen, onClose, onLogin, resetToken }) {
         onLogin?.();
         
       } else if (viewState === 'forgot_password') {
-        const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/users/forgotpassword`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/users/forgotpassword`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: formData.email })
@@ -88,7 +88,7 @@ export function AuthModal({ isOpen, onClose, onLogin, resetToken }) {
         if (formData.password !== formData.confirmPassword) {
           throw new Error("Passwords do not match");
         }
-        const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/users/resetpassword/${resetToken}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/users/resetpassword/${resetToken}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ password: formData.password })

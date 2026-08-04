@@ -26,7 +26,7 @@ export function CustomersView() {
     try {
       setLoading(true);
       const token = localStorage.getItem('token') || '';
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/users`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/users`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -87,7 +87,7 @@ export function CustomersView() {
     try {
       setIsCreatingAdmin(true);
       const token = localStorage.getItem('token') || '';
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/users/admin`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/users/admin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify(newAdmin)
@@ -117,7 +117,7 @@ export function CustomersView() {
 
     try {
       const token = localStorage.getItem('token') || '';
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/users/${userId}/status`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/users/${userId}/status`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${token}` }
       });

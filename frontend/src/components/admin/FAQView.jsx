@@ -13,7 +13,7 @@ export function FAQView() {
 
   const fetchFaqs = async () => {
     try {
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/faqs/admin`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/faqs/admin`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       const data = await res.json();
@@ -31,7 +31,7 @@ export function FAQView() {
     if (!question || !answer) return;
 
     try {
-      await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/faqs`, {
+      await fetch(`${import.meta.env.VITE_API_URL || ''}/api/faqs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export function FAQView() {
     if (!question || !answer) return;
 
     try {
-      await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/faqs/${faq._id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL || ''}/api/faqs/${faq._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ export function FAQView() {
   const handleDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this FAQ?')) return;
     try {
-      await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/faqs/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL || ''}/api/faqs/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });

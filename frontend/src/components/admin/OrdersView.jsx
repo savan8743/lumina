@@ -17,7 +17,7 @@ export function OrdersView() {
     try {
       setLoading(true);
       const token = localStorage.getItem('token') || '';
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/orders`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/orders`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -37,7 +37,7 @@ export function OrdersView() {
     try {
       setUpdatingId(orderId);
       const token = localStorage.getItem('token') || '';
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/orders/${orderId}/status`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/orders/${orderId}/status`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

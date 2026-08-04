@@ -22,7 +22,7 @@ export function SettingsView() {
   const fetchSettings = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/cms/settings`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/cms/settings`);
       const data = await res.json();
       if (data) {
         setFormData({
@@ -62,7 +62,7 @@ export function SettingsView() {
         }
       };
 
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/cms/settings`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/cms/settings`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify(payload)
@@ -93,7 +93,7 @@ export function SettingsView() {
     try {
       setChangingPassword(true);
       const token = localStorage.getItem('token') || '';
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/users/profile`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/users/profile`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ password: passwordData.newPassword })

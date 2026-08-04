@@ -22,7 +22,7 @@ export function CouponsView() {
     try {
       setLoading(true);
       const token = localStorage.getItem('token') || '';
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/coupons`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/coupons`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -91,7 +91,7 @@ export function CouponsView() {
     if (!window.confirm('Are you sure you want to delete this coupon?')) return;
     try {
       const token = localStorage.getItem('token') || '';
-      const res = await fetch(`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/coupons/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/coupons/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
