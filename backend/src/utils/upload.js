@@ -1,18 +1,8 @@
 const multer = require("multer");
 const path = require("path");
 
-// Configure storage
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "uploads/");
-    },
-    filename: function (req, file, cb) {
-        cb(
-            null,
-            `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
-        );
-    },
-});
+// Configure storage (Memory Storage for Base64 conversion on Serverless)
+const storage = multer.memoryStorage();
 
 // Check file type
 function checkFileType(file, cb) {
