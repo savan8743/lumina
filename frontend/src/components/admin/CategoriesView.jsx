@@ -61,7 +61,8 @@ export function CategoriesView() {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token') || '';
-      const url = editingCategory ? `/api/categories/${editingCategory._id}` : '/api/categories';
+      const endpoint = editingCategory ? `/api/categories/${editingCategory._id}` : '/api/categories';
+      const url = `${import.meta.env.VITE_API_URL || ''}${endpoint}`;
       const method = editingCategory ? 'PUT' : 'POST';
       
       const res = await fetch(url, {

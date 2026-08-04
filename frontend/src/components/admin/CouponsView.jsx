@@ -63,7 +63,8 @@ export function CouponsView() {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token') || '';
-      const url = editingCoupon ? `/api/coupons/${editingCoupon._id}` : '/api/coupons';
+      const endpoint = editingCoupon ? `/api/coupons/${editingCoupon._id}` : '/api/coupons';
+      const url = `${import.meta.env.VITE_API_URL || ''}${endpoint}`;
       const method = editingCoupon ? 'PUT' : 'POST';
       
       const payload = { ...formData, code: formData.code.toUpperCase() };

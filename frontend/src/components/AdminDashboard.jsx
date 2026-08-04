@@ -433,7 +433,8 @@ function ProductsView() {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token') || '';
-      const url = editingProduct ? `/api/products/${editingProduct._id}` : '/api/products';
+      const endpoint = editingProduct ? `/api/products/${editingProduct._id}` : '/api/products';
+      const url = `${import.meta.env.VITE_API_URL || ''}${endpoint}`;
       const method = editingProduct ? 'PUT' : 'POST';
       
       const payload = { ...formData };
